@@ -1,1 +1,1 @@
-web: gunicorn TricimotosBackend.wsgi
+web: python manage.py collectstatic && gunicorn TricimotosBackend.wsgi
