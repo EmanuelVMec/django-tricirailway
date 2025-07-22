@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-*ss_7p^-_mw@^()b!32ggqcgk!%rdf=v5t89mlb=%u(2=dds(m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'web-production-8280a.up.railway.app', '192.168.10.170', '192.168.76.78','192.168.50.1']
+ALLOWED_HOSTS = ['localhost', 'tricimotos.up.railway.app', '192.168.10.170', '192.168.76.78','192.168.50.1']
 
 
 # Application definition
@@ -89,7 +89,7 @@ REST_FRAMEWORK = {
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 DATABASES = {
-    'default': dj_database_url.config(default='postgresql://anc_trici_owner:3L4gCXxVAOFo@ep-sparkling-credit-a5xpw7vd.us-east-2.aws.neon.tech/anc_trici?sslmode=require')
+    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
 }
 #DATABASE_PUBLIC_URL: postgresql://postgres:bWYQHqyNsdBiXEoInEpUhErjdDABzKzq@trolley.proxy.rlwy.net:29279/railway
 #DATABASE_URL: postgresql://postgres:bWYQHqyNsdBiXEoInEpUhErjdDABzKzq@postgres.railway.internal:5432/railway
