@@ -2,3 +2,4 @@ entorno
 migrations
 __pycache__
 .env
+db.sqlite3
