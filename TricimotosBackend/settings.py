@@ -91,8 +91,8 @@ REST_FRAMEWORK = {
 DATABASES = {
     'default': dj_database_url.config(default='postgresql://anc_trici_owner:3L4gCXxVAOFo@ep-sparkling-credit-a5xpw7vd.us-east-2.aws.neon.tech/anc_trici?sslmode=require')
 }
-
-
+#DATABASE_PUBLIC_URL: postgresql://postgres:bWYQHqyNsdBiXEoInEpUhErjdDABzKzq@trolley.proxy.rlwy.net:29279/railway
+#DATABASE_URL: postgresql://postgres:bWYQHqyNsdBiXEoInEpUhErjdDABzKzq@postgres.railway.internal:5432/railway
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
