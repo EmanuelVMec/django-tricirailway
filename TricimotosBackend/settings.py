@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-*ss_7p^-_mw@^()b!32ggqcgk!%rdf=v5t89mlb=%u(2=dds(m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.10.170', '192.168.76.78','192.168.50.1']
+ALLOWED_HOSTS = ['192.168.10.170', '192.168.76.78','192.168.50.1','10.229.225.1']
 
 
 # Application definition
@@ -132,3 +132,5 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CSRF_TRUSTED_ORIGINS = ['https://*','https://tricimotos.up.railway.app/']
