@@ -32,7 +32,7 @@ SECRET_KEY = 'django-insecure-*ss_7p^-_mw@^()b!32ggqcgk!%rdf=v5t89mlb=%u(2=dds(m
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'tricimotos.up.railway.app', '192.168.10.170', '192.168.76.78','192.168.50.1']
+ALLOWED_HOSTS = ['192.168.10.170', '192.168.76.78','192.168.50.1']
 
 
 # Application definition
@@ -44,14 +44,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'whitenoise.runserver_nostatic',
     'TricimotosAgenda',
     'rest_framework.authtoken',
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -89,10 +87,10 @@ REST_FRAMEWORK = {
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 DATABASES = {
-    'default': dj_database_url.config(default=os.getenv('DATABASE_URL'))
+    'default': dj_database_url.config(default='postgresql://anc_trici_owner:3L4gCXxVAOFo@ep-sparkling-credit-a5xpw7vd.us-east-2.aws.neon.tech/anc_trici?sslmode=require')
 }
-#DATABASE_PUBLIC_URL: postgresql://postgres:bWYQHqyNsdBiXEoInEpUhErjdDABzKzq@trolley.proxy.rlwy.net:29279/railway
-#DATABASE_URL: postgresql://postgres:bWYQHqyNsdBiXEoInEpUhErjdDABzKzq@postgres.railway.internal:5432/railway
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
@@ -129,15 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
 STATIC_URL = 'static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
-STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-CSRF_TRUSTED_ORIGINS = ['http://*','https://web-production-8280a.up.railway.app','https://tricimotos.up.railway.app']

@@ -18,5 +18,7 @@ urlpatterns = [
     path('api/rides/marcar-ha-llegado/', views.marcar_ha_llegado),
     path("api/rides/estado/", views.obtener_estado_ride),
     path("api/carreras/hallegado/", views.carreras_halllegado_conductor),
+    path('api/solicitud/<int:solicitud_id>/cancelar/', views.cancelar_solicitud, name='cancelar_solicitud'),
+    path('api/rides/<int:ride_id>/cancelar/', views.cancelar_ride, name='cancelar_rides'),
 
 ]

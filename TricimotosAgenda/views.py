@@ -377,3 +377,40 @@ def carreras_halllegado_conductor(request):
         for ride in rides
     ]
     return Response(data, status=status.HTTP_200_OK)
+
+@api_view(['PATCH'])
+@authentication_classes([ClerkAuthentication])
+def cancelar_solicitud(request, solicitud_id):
+    user_id = request.user  # Clerk ID del cliente
+
+    try:
+        solicitud = Solicitud.objects.get(id=solicitud_id, cliente_clerk_id=user_id)
+    except Solicitud.DoesNotExist:
+        return Response({"detail": "Solicitud no encontrada o no pertenece al usuario."}, status=status.HTTP_404_NOT_FOUND)
+
+    if solicitud.estado in ['cancelada', 'aceptada']:
+        return Response({"detail": "No se puede cancelar una solicitud ya aceptada o cancelada."}, status=status.HTTP_400_BAD_REQUEST)
+
+    solicitud.estado = 'cancelada'
+    solicitud.cancelled_at = timezone.now()
+    solicitud.save()
+
+    return Response({"detail": "Solicitud cancelada correctamente."}, status=status.HTTP_200_OK)
+
+
+@api_view(['PATCH'])
+@authentication_classes([ClerkAuthentication])
+def cancelar_ride(request, ride_id):
+    try:
+        ride = Ride.objects.get(id=ride_id)
+    except Ride.DoesNotExist:
+        return Response({"detail": "Ride no encontrado."}, status=status.HTTP_404_NOT_FOUND)
+
+    if ride.estado in ['cancelado', 'hallegado']:
+        return Response({"detail": "No se puede cancelar un ride ya cancelado o que ya ha llegado."}, status=status.HTTP_400_BAD_REQUEST)
+
+    ride.estado = 'cancelado'
+    ride.save()
+
+    return Response({"detail": "Ride cancelado correctamente."}, status=status.HTTP_200_OK)
+

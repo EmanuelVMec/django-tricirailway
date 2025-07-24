@@ -30,7 +30,8 @@ class Ride(models.Model):
     cliente_clerk_id = models.CharField(max_length=255,null=True)  # cliente
     estado = models.CharField(
         max_length=20,
-        choices=[('encamino', 'En camino'), ('hallegado', 'Ha llegado')],
+        choices=[('encamino', 'En camino'), ('hallegado', 'Ha llegado'),('cancelado', 'Cancelado')
+],
         default='encamino'
     )
 
